@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+    <style>
+      #progress-container {
+        width: 100%;
+        height: 30px;
+        background-color: #f0f0f0;
+        margin-top: 20px;
+        overflow: hidden;
+      }
+
+      #progress-bar {
+        height: 100%;
+        width: 0;
+        background-color: #3498db;
+        transition: width 0.1s linear;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="progress-container">
+      <div id="progress-bar"></div>
+    </div>
+    <!-- <div id="progress-container">
+      <div id="progress-bar"></div>
+    </div> -->
+
+    <script src="../p5 js library, refer mine self for path/p5.js"></script>
+
+    <script src="script.js"></script>
+    <script src="jqueryy.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var progressBar = document.getElementById("progress-bar");
+        var progressContainer = document.getElementById("progress-container");
+
+        var duration = 2000; // 10 seconds
+        var interval = 50; // Update every 50 milliseconds
+        var step = (interval / duration) * 100;
+        var width = 0;
+
+        function updateProgressBar() {
+          width += step;
+          progressBar.style.width = width + "%";
+
+          if (width >= 100) {
+            clearInterval(progressInterval);
+          }
+        }
+
+        var progressInterval = setInterval(updateProgressBar, interval);
+      });
+    </script>
+  </body>
+  <footer>
+    Any live cell with fewer than two live neighbors dies as if caused by under-population.
+    <br>
+    Any live cell with two or three live neighbors lives on to the next generation.
+    <br>
+    Any live cell with more than three live neighbors dies, as if by over-population.
+    <br>
+    Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
+    <br>
+  </footer>
+</html>
